@@ -19,11 +19,13 @@ roundedLarge:0,
 paymentAmount:0,
 total:0,
 total2:0,
-error:"",
+error:false,
 medium:0,
 roundedMedium:0,
 small:0,
 roundedSmall:0,
+items:[],
+showHistory:true,
 
 
 //increment large pizzas
@@ -171,10 +173,28 @@ pay(){
 
         if(Number(this.paymentAmount)<this.total2){
         	
-              this.error="The amount is insufficient";
-          }
+             this.error=true;
+           
+             
+         }
 
      else{
+     	
+     if(this.large>0){
+
+this.items.push("Large Pizza @R"+this.roundedLarge);
+}
+
+     if(this.medium>0){
+
+this.items.push("Medium Pizza @R"+this.roundedMedium);
+}
+
+     if(this.small>0){
+
+this.items.push("Small Pizza @R"+this.roundedSmall);
+}
+
 	
             this.cartTotal=0;
            this.large=0;
@@ -186,7 +206,7 @@ pay(){
           this.roundedLarge=0;
           this.roundedSmall=0;
           this.roundedMedium=0;
-          this.error="";
+          this.error=false;
           this.showLarge=false;
          this.showMedium=false;
         this.showSmall=false;
@@ -194,6 +214,9 @@ pay(){
         this.showInput=false;
         this.showCheckout=false;
          this.empty=true;
+         
+         
+         
 
        }
 
@@ -287,6 +310,8 @@ displayCart(){
 document.addEventListener("alpine:init",()=>{
 
 Alpine.data("order",Order);
+
+
 
 }
 

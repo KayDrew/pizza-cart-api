@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./css/style.css">
                 <link rel="stylesheet" href="./css/all.min.css">
                         	<script src="./js/all.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
        	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
 <body>
@@ -26,7 +27,7 @@
 		<h2 style="text-align:center; padding-top:20px; padding-bottom: 30px;font-family:monospace; font-size:1.8em;">Your Cart</h2>
 		
 <div id="right" >
-		<span id="large" x-show="showLarge"> Large Pizza</span>
+		<span  id="large" x-show="showLarge"> Large Pizza</span>
        <button x-show="showLarge" id="add"  @click="incrementLarge">+</button>
       <button x-show="showLarge"  id="remove" @click="decrementLarge">-</button>
      <span  x-show="showLarge"  id="quantity" x-text="roundedLarge"></span><br/>
@@ -45,10 +46,21 @@
 	<p id="empty" x-show="empty">Your cart is empty</p>
 	<button class="checkout" x-show="empty" @click="showMenu=true; showCart=false">Shop Items</button>
    <button class="checkout"  x-show="showCheckout"  @click="showInput=true">checkout</button><br/><br/>
-   <p id="error"  x-text="error"></p>
+   <p id="error"  x-show="error">The Amount Is Insufficient</p>
   <span x-show="showInput"> Amount To Pay: </span><input  id="amountPaid" type="Number" placeholder="enter cash amount" x-model="paymentAmount" x-show="showInput"/>
-  <button class="pay"  @click="pay" x-show="showInput">Pay</button>
+  <button class="pay"  @click="pay; setTimeout(function(){
+
+error=false;
+
+},3000);" x-show="showInput">Pay</button>
  </div>
+ 
+</div>
+
+<div class="orderHistory" x-show="showHistory">
+<template  x-for="item in items">
+	<li x-text="item"></li>
+</template>
 
 </div>
 
