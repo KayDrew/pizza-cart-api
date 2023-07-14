@@ -25,7 +25,7 @@ roundedMedium:0,
 small:0,
 roundedSmall:0,
 items:[],
-showHistory:true,
+showHistory:false,
 
 
 //increment large pizzas
@@ -230,12 +230,14 @@ displayCart(){
       	
                this.showCart=false;
                this.showMenu=true;
+               this.showHistory=false;
            }
 
     else{
 
              this.showCart=true;
               this.showMenu=false;
+              this.showHistory=false;
       }
 
 
@@ -298,8 +300,32 @@ displayCart(){
             }
 
     },
+    
+
+displayHistory(){
+
+if(this.showHistory==false){
+this.showHistory=true;
+this.showMenu=false;
+this.showCart=false;
+
+}
+
+else{
+this.showHistory=false;
+this.showMenu=true;
+this.showCart=false;
+
+
+}
+},
       
-      
+      hideHistory(){
+this.showHistory=false;
+this.showMenu=true;
+this.showCart=false;
+}
+
 
    };
    

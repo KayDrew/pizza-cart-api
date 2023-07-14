@@ -14,7 +14,9 @@
 <body>
 	
 <div x-data="order">
-	<button  id="pastOrders"  @click="displayOrderHistory">Order History </button>
+	<div class="clock">
+<i id="clockIcon" class="fa-solid  fa-clock" x-on:click="displayHistory"></i>
+</div>
 	<div class="icon">
 			<p id="itemCount" x-text="total"><p>
 				</div>
@@ -59,10 +61,11 @@ error=false;
 </div>
 
 <div class="orderHistory" x-show="showHistory">
-	<h1 style="font-family:monospace; text-align:center; margin-bottom:35px">Your Order History</h1>
+	<h1 style="font-family:monospace; text-align:center; margin-bottom:35px; padding-top: 15px">Your Order History</h1>
     <template  x-for="item in items">
 	    <li x-text="item"></li>
    </template>
+   <button  id="back" @click="hideHistory">Back</butto>
 </div>
 
 
