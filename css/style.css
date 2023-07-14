@@ -12,6 +12,30 @@ body{
   
   }
   
+  
+  .orderHistory{
+
+background-color:rgba(58,134,255,0.8);
+border-radius:20px; 
+	box-shadow: 1px 1px 3px 3px rgba(251,86,7,0.4);
+	width: 400px;
+	height:70%;
+	margin-bottom:20px;
+}
+
+li{
+list-style-type: none;
+
+text-align: center;
+color: rgba(0,0,0,0.8);
+font-size: 1.2em;
+font-family: monospace;
+margin-bottom: 5px;
+}
+  
+  template {
+background-color: rgba (0,120,240,0.4);
+}
  #add, #remove{
 
 background-color: rgba(255,255,255,0.7);
@@ -79,7 +103,7 @@ border-radius:20px;
 text-align: center;
 }
 
-.checkout{
+.checkout, #pastOrders{
 background-color: grey;
 border-radius: 5px 5px;
 border: none;
@@ -217,7 +241,7 @@ background-color:rgba(255,0,110,0.3);
 
 h1
 {margin-bottom:20px;
-margin-top:30px;
+margin-top:40px;
 text-align:center;
 }
 
@@ -232,7 +256,7 @@ padding-right:100px;
 	margin-left: 42%;
 	}
 
-.cart{
+.cart,.orderHistory{
 
 	width:80%;
 	margin: 0 auto;
