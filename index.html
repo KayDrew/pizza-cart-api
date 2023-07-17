@@ -68,14 +68,33 @@ error=false;
    <button  id="back" @click="hideHistory">Back</butto>
 </div>
 
-   
+<div class="featured">
+<template  x-for="pizza in featuredPizzas">
+	<div>
+<h2 x-text="pizza.flavour"></h2>
+<h3 x-text="pizza.size"></h3>
+<h3 x-text="pizza.type"></h3>
+<h3 x-text="pizza.price"></h3>
+<p x-text="pizza.pizza_id"></p>
+<button  class="buy"  @click="incrementLarge">BUY</button>
+</div>
+</template>
+<div>
+<h2 x-text="smallPizza.flavour"></h2>
+<h3 x-text="smallPizza.size"></h3>
+<h3 x-text="smallPizza.price"></h3>
+<p x-text="smallPizza.pizza_id"></p>
+<button  class="buy"  @click="incrementMedium">BUY</button>
+</div>
+</div>
 
 <div class="pizzaList">
 <template  x-for="pizza in pizzas">
 <table>
 <tr><td x-text="pizza.flavour"></td>
-<td x-text="pizza.price"></td>
 <td x-text="pizza.size"></td>
+<td x-text="pizza.price"></td>
+<td x-text="pizza.pizza_id"></td>
     <td>  <button  class="buy"  @click="incrementMedium">BUY</button></td>
 </tr>
 
