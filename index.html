@@ -1,147 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Memory Game</title>
-        <link rel="stylesheet" href="./css/style.css">
-                <link rel="stylesheet" href="./css/all.min.css">
-                        	<script src="./js/all.min.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-       	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    </head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <script src="./js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
 <body>
-	
-<div x-data="order" >
-	<div class="clock">
-<i id="clockIcon" class="fa-solid  fa-clock" x-on:click="displayHistory"></i>
-</div>
-	<div class="icon">
-			<p id="itemCount" x-text="total"><p>
-				</div>
-				
-				<div  class="icon">
-                 <i  id="icon" class="fa-solid fa-cart-shopping" x-on:click="displayCart"></i>
-                  </div>
-       <h1 id="heading">Perfect Pizza</h1>
-	
-	<div class="cart" x-show="showCart">
-		<h2 style="text-align:center; padding-top:20px; padding-bottom: 30px;font-family:monospace; font-size:1.8em;">Your Cart</h2>
-		
-<div id="right" >
-		<span  id="large" x-show="showLarge"> Large Pizza</span>
-       <button x-show="showLarge" id="add"  @click="incrementLarge">+</button>
-      <button x-show="showLarge"  id="remove" @click="decrementLarge">-</button>
-     <span  x-show="showLarge"  id="quantity" x-text="roundedLarge"></span><br/>
-      <span id="medium" x-show="showMedium" >Medium Pizza</span>
-     <button x-show="showMedium"  id="add" @click="incrementMedium">+</button>
-    <button  x-show="showMedium"  id="remove"  @click="decrementMedium">-</button>
-    <span x-show="showMedium"  id="quantity" x-text="roundedMedium"></span><br/>
-    <span id="small"  x-show="showSmall"> Small Pizza</span>
-   <button x-show="showSmall" id="add" @click="incrementSmall">+</button>
-  <button x-show="showSmall"   id="remove" @click="decrementSmall">-</button>
-  <span  x-show="showSmall"  id="quantity" x-text="roundedSmall"></span><br/>
-  <span x-show="orderItems">Your total: R</span><span x-show="orderItems"  id="total"  x-text="total2"    >0.00</span>
-</div>
 
- <div id="center">
-	<p id="empty" x-show="empty">Your cart is empty</p>
-	<button class="checkout" x-show="empty" @click="showMenu=true; showCart=false">Shop Items</button>
-   <button class="checkout"  x-show="showCheckout"  @click="showInput=true">checkout</button><br/><br/>
-   <p id="error"  x-show="error">The Amount Is Insufficient</p>
-  <span x-show="showInput"> Amount To Pay: </span><input  id="amountPaid" type="Number" placeholder="enter cash amount" x-model="paymentAmount" x-show="showInput"/>
-  <button class="pay"  @click="pay; setTimeout(function(){
-
-error=false;
-
-},3000);" x-show="showInput">Pay</button>
- </div>
- 
-</div>
-
-<div class="orderHistory" x-show="showHistory">
-	<h1 style="font-family:monospace; text-align:center; margin-bottom:35px; padding-top: 15px">Your Order History</h1>
-    <template  x-for="item in items">
-	    <li x-text="item"></li>
-   </template>
-   <button  id="back" @click="hideHistory">Back</butto>
-</div>
-
-<div class="featured">
-<template  x-for="pizza in featuredPizzas">
-	<div>
-<h2 x-text="pizza.flavour"></h2>
-<h3 x-text="pizza.size"></h3>
-<h3 x-text="pizza.type"></h3>
-<h3 x-text="pizza.price"></h3>
-<p x-text="pizza.pizza_id"></p>
-<button  class="buy"  @click="incrementLarge">BUY</button>
-</div>
-</template>
-<div>
-<h2 x-text="smallPizza.flavour"></h2>
-<h3 x-text="smallPizza.size"></h3>
-<h3 x-text="smallPizza.price"></h3>
-<p x-text="smallPizza.pizza_id"></p>
-<button  class="buy"  @click="incrementMedium">BUY</button>
-</div>
-</div>
-
-<div class="pizzaList">
-<template  x-for="pizza in pizzas">
-<table>
-<tr><td x-text="pizza.flavour"></td>
-<td x-text="pizza.size"></td>
-<td x-text="pizza.price"></td>
-<td x-text="pizza.pizza_id"></td>
-    <td>  <button  class="buy"  @click="incrementMedium">BUY</button></td>
-</tr>
-
-</table>
-
-</template>
-</div>
-
-  <div class="footer" >
-  
-  	
-<div class="contact">
-  
-  <div id="one">
-  
-  <p><b>Contact Us at: (021)-541-1000
-  <br/>twitter<br/>/facebook<br>
-	 /instagram
-	 </br>
-	 </b>
-	 
-	 </p>
-        
-  </div>
-  
-   <div id="two">
- <p ><b>Pizza  Plazza<br/>
-	  Dough Rooad<br>
-	  Base Town</b></p>
-	  </div>
-	  
-</div>
-	  
-    <p><b>@perfect pizza</b></p>
-		 
-		</div>
+  <div x-data="order">
+    <div class="clock">
+      <i id="clockIcon" class="fa-solid  fa-clock" x-on:click="displayHistory"></i>
     </div>
-</div>
+    <div class="icon">
+      <p id="itemCount">
+      <p>
+    </div>
+
+    <div class="icon">
+      <i id="icon" class="fa-solid fa-cart-shopping" x-on:click="displayCart"></i>
+    </div>
+    <h1 id="heading">Perfect Pizza</h1>
+
+ <div class="cart" >
+		<h2 style="text-align:center; padding-top:20px; padding-bottom: 30px;font-family:monospace; font-size:1.8em;">Your Cart</h2>
+		<template x-for="pizza in cartPizzas">
+<span x-text="pizza.flavour"></span><span x-text="pizza.size"></span><span x-text="pizza.price"></span><button @click="add"></button><button @click="remove"></button>
+</template>
+		<span >Your total: R</span><span x-show="orderItems"  id="total"  x-text="cartTotal"   ></span>
+		
+    <div>
+    	
+
+    <div class="featured">
+      <template x-for="pizza in featuredPizzas">
+        <div>
+          <h2 x-text="pizza.flavour"></h2>
+          <h3 x-text="pizza.size"></h3>
+          <h3 x-text="pizza.type"></h3>
+          <h3 x-text="pizza.price"></h3>
+          <p x-text="pizza.pizza_id"></p>
+          <button class="buy" @click="buy(pizza.pizza_id)">BUY</button>
+        </div>
+      </template>
+    </div>  
+   
+
+    <div class="pizzaList">
+      <template x-for="pizza in pizzas">
+        <table>
+          <tr>
+            <td x-text="pizza.flavour"></td>
+            <td x-text="pizza.size"></td>
+            <td x-text="pizza.price"></td>
+            <td x-text="pizza.pizza_id"></td>
+            <td> <button class="buy" @click="buy(pizza_id)">BUY</button></td>
+          </tr>
+
+        </table>
+
+      </template>
+    </div>
+    </div>
+
+    <div class="footer">
 
 
-</div>
+      <div class="contact">
+
+        <div id="one">
+
+          <p><b>Contact Us at: (021)-541-1000
+              <br />twitter<br />/facebook<br>
+              /instagram
+              </br>
+            </b>
+
+          </p>
+
+        </div>
+
+        <div id="two">
+          <p><b>Pizza Plazza<br />
+              Dough Rooad<br>
+              Base Town</b></p>
+        </div>
+
+      </div>
+
+      <p><b>@perfect pizza</b></p>
+
+    </div>
+  </div>
+  </div>
+
+
+  </div>
 
 
 </body>
-<script src="./js/index.js"  charset="UTF-8">
-	
+<script src="./js/index.js" charset="UTF-8">
+
 
 
 </script>
+
 </html>
