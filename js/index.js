@@ -64,22 +64,14 @@ document.addEventListener("alpine:init", () => {
             },
 
 
-            //decrement large pizzas 
-            decrementCart(){
-
-
-
-
-           
-
-
-            },
-
-
+   
 
             //Determine if payment amount is enough
 
-            pay(){
+            pay(pizzaId){
+            	
+axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/pay',{'cart_code':'skFkDG1DC1',
+'pizza_id': pizzaId}).then(
 
                   this.error = false;
                   this.orderItems = false;
@@ -87,6 +79,8 @@ document.addEventListener("alpine:init", () => {
                   this.showCheckout = false;
                   this.empty = true;
 
+
+);
             },
 
 
@@ -103,9 +97,72 @@ document.addEventListener("alpine:init", () => {
                     
                   },
 
-add(){},
+add(pizzaId){
 
-remove(){},
+axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/add', { 'cart_code': 'skFkDG1DC1', 
+                  'pizza_id': pizzaId}).then(
+
+                        () => {
+                       
+                  
+                  this.getCart().then(result=> {
+
+                        this.cartPizzas=result.data.pizzas;
+                        this.cartTotal=result.data.total;
+                        
+ console.log(pizzaId+' added');
+                      console.log(this.cartTotal);
+                         console.log(this.cartPizzas);
+                        }
+                  
+
+
+                  );
+
+                 
+                  
+                        }
+                  );
+                  
+                  
+
+                 
+
+},
+
+remove(pizzaId){
+
+axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', { 'cart_code': 'skFkDG1DC1', 
+                  'pizza_id': pizzaId}).then(
+
+                        () => {
+                       
+                  
+                  this.getCart().then(result=> {
+
+                        this.cartPizzas=result.data.pizzas;
+                        this.cartTotal=result.data.total;
+                        
+ console.log(pizzaId+' added');
+                      console.log(this.cartTotal);
+                         console.log(this.cartPizzas);
+                        }
+                  
+
+
+                  );
+
+                 
+                  
+                        }
+                  );
+                  
+                  
+
+                 
+
+
+},
 
                   init(){
 
