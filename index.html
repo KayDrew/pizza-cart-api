@@ -31,12 +31,22 @@
 
  <div class="cart" >
 		<h2 style="text-align:center; padding-top:20px; padding-bottom: 30px;font-family:monospace; font-size:1.8em;">Your Cart</h2>
-		<template x-for="pizza in cartPizzas">
-<span x-text="pizza.flavour"></span><span x-text="pizza.size"></span><span x-text="pizza.price"></span><button @click="add"></button><button @click="remove"></button>
-</template>
-		<span >Your total: R</span><span x-show="orderItems"  id="total"  x-text="cartTotal"   ></span>
+		  <template x-for="pizza in cartPizzas">
+        <table>
+          <tr>
+            <td x-text="pizza.flavour"></td>
+            <td x-text="pizza.size"></td>
+            <td x-text="pizza.price"></td>
+            <td x-text="pizza.pizza_id"></td>
+            <td> <button class="buy" @click="buy(pizza.pizza_id)">+</button></td> <td> <button class="buy" @click="remove(pizza.pizza_id)">-</button></td>
+          </tr>
+
+        </table>
+
+      </template>
+		<span >Your total: R</span><span  id="total"  x-text="cartTotal"   ></span>
 		
-    <div>
+    </div>
     	
 
     <div class="featured">
