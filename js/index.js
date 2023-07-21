@@ -103,9 +103,9 @@ document.addEventListener("alpine:init", () => {
                     
                   },
 
-add(),
+add(){},
 
-remove(),
+remove(){},
 
                   init(){
 
