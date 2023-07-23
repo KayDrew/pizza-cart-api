@@ -69,12 +69,12 @@ message='';},3000)"  x-show="showInput">Pay</button>
 <div class="menu" x-show="showMenu">
     <div class="featured">
       <template x-for="pizza in featuredPizzas">
-        <div>
+        <div class="pizza">
+        	<img src="pizza1.png"/>
           <h2 x-text="pizza.flavour"></h2>
           <h3 x-text="pizza.size"></h3>
           <h3 x-text="pizza.type"></h3>
           <h3 x-text="pizza.price"></h3>
-      
           <button class="buy" @click="buy(pizza.pizza_id)">BUY</button>
         </div>
       </template>
@@ -83,16 +83,19 @@ message='';},3000)"  x-show="showInput">Pay</button>
 
     <div class="pizzaList"  style="margin-top:30px;margin-bottom:30px">
       <template x-for="pizza in pizzas">
-        <table>
-          <tr >
-            <td x-text="pizza.flavour"></td>
-            <td x-text="pizza.size"></td>
-            <td x-text="pizza.price"></td>
-            <td x-text="pizza.id"></td>
-            <td> <button class="buyList" @click="buy(pizza.id)">BUY</button></td>
-          </tr>
+        
+          <li>
+          	<span><img src="pizza2.png"  alt="pizza image" style="width:100px"/></span>
+          
+            <spanx-text="pizza.flavour"></span>
+            <span x-text="pizza.size"></span>
+            <span x-text="pizza.price"></span>
+ 
+             <button class="buyList" @click="buy(pizza.id)">BUY</button>
+       </li>
+   
 
-        </table>
+        
 
       </template>
     </div>

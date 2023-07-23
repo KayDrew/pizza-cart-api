@@ -20,7 +20,8 @@ showCheckout:false,
 showInput:false, 
 message:"",
 amount:0,                 
- empty:false,             
+ empty:false,
+           
 
             
 createCart(){
@@ -280,7 +281,7 @@ this.cartTotal=result.data.total;
                         axios.get('https://pizza-api.projectcodex.net/api/pizzas/featured?username=KayDrew').then(result => {
 
                               this.featured = result.data.pizzas;
-                              console.log(this.featured);
+                              
                               this.featuredPizzas.push(this.featured[0]);
                               this.featuredPizzas.push(this.featured[6]);
                               this.featuredPizzas.push(this.featured[16]);
