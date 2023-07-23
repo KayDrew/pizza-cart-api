@@ -20,7 +20,7 @@ showCheckout:false,
 showInput:false, 
 message:"",
 amount:0,                 
-                  
+ empty:false,             
 
             
 createCart(){
@@ -101,6 +101,7 @@ this.message=result.data.message;
 else{
                   this.showInput = false;
                   this.showCheckout = false;
+                  this.empty=true;
                   
                  this.message="Payment successful!";
 
@@ -131,8 +132,16 @@ this.createCart();
 this.showCart=true;
 this.showMenu=false;
 this.showHistory=false;
-this.showCheckout=true;
 
+if(this.cartTotal>0){
+this.showCheckout=true;
+this.empty=false;
+}
+
+else{
+
+this.empty=true;
+}
 
 }
 
@@ -142,6 +151,7 @@ else{
 this.showCart=false;
 this.showMenu=true;
 this.showHistory=false;
+
 }
             },
 
@@ -216,7 +226,7 @@ axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', { 'cart_c
                         if(this.cartTotal==0){
 this.showCheckout=false;
 this.showInput=false;
-
+this.empty=true;
 }       
 
 
@@ -270,7 +280,7 @@ this.cartTotal=result.data.total;
                         axios.get('https://pizza-api.projectcodex.net/api/pizzas/featured?username=KayDrew').then(result => {
 
                               this.featured = result.data.pizzas;
-
+                              console.log(this.featured);
                               this.featuredPizzas.push(this.featured[0]);
                               this.featuredPizzas.push(this.featured[6]);
                               this.featuredPizzas.push(this.featured[16]);
