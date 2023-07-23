@@ -21,6 +21,7 @@ showInput:false,
 message:"",
 amount:0,                 
  empty:false,
+ totalItems:0,
            
 
             
@@ -58,9 +59,10 @@ this.cartId=result.data.cart_code;
                   this.getCart().then(result=> {
 
                         this.cartPizzas=result.data.pizzas;
-                        this.cartTotal=result.data.total.toFixed(2);
+                        this.cartTotal=result.data.total.toFixed(2)
                          this.showCheckout=true;
                          
+                                                    
                                        
                          
                         }

@@ -76,7 +76,7 @@ background-color: rgba(255,255,255,0.4);
 #icon{
 color:rgba(246, 244, 242,1);
 font-size: 1.5em;
-margin-top:-43px;
+margin-top:-23px;
 }
 
 .icon{
@@ -89,10 +89,10 @@ justify-content: right;
 #itemCount{
 background-color:green;
 border-radius: 50%;
-padding: 4px;
+padding: 3px;
 font-size: 10px;
 color: white;
-margin-top:-33px;
+margin-top:-39px;
 height:80%;
 margin-right: -5px;
 
