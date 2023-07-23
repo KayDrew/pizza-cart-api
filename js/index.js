@@ -13,6 +13,7 @@ document.addEventListener("alpine:init", () => {
                   cartId: "",
               showCart:false,
                   pizzaId:"",
+                  showMenu:true,
                   showHistory:false,
 showCheckout:false,
 showInput:false,                  
@@ -104,15 +105,42 @@ this.getCart().then(result=> {
             //show cart items
             displayCart(){
 
-             
+             if(this.showCart==false){
+this.showCart=true;
+this.showMenu=false;
+this.showHistory=false;
+}
+
+
+else{
+
+this.showCart=false;
+this.showMenu=true;
+this.showHistory=false;
+}
             },
 
 
 
                   displayHistory(){
+                  	
+       if(this.showHistory==false){
+this.showCart=false;
+this.showMenu=false;
+this.showHistory=true;
+}
 
+
+else{
+
+this.showCart=false;
+this.showMenu=true;
+this.showHistory=false;
+}
                     
                   },
+                  
+                  
 
 add(pizzaId){
 

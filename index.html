@@ -29,7 +29,7 @@
     </div>
     <h1 id="heading">Perfect Pizza</h1>
 
- <div class="cart" >
+ <div class="cart"  x-show="showCart">
 		<h2 style="text-align:center; padding-top:20px; padding-bottom: 30px;font-family:monospace; font-size:1.8em;">Your Cart</h2>
 		  <template x-for="pizza in cartPizzas">
         <table>
@@ -49,7 +49,7 @@
 		<button id="checkout" x-show="showCheckout" @click="checkoutClicked">Checkout</button>
     </div>
     	
-
+<div class="menu" x-show="showMenu">
     <div class="featured">
       <template x-for="pizza in featuredPizzas">
         <div>
@@ -78,6 +78,7 @@
         </table>
 
       </template>
+    </div>
     </div>
     </div>
 
