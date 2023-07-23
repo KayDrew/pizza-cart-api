@@ -13,7 +13,9 @@ document.addEventListener("alpine:init", () => {
                   cartId: "",
               showCart:false,
                   pizzaId:"",
-                  
+                  showHistory:false,
+showCheckout:false,
+showInput:false,                  
                   
 
             
@@ -41,11 +43,10 @@ document.addEventListener("alpine:init", () => {
                   this.getCart().then(result=> {
 
                         this.cartPizzas=result.data.pizzas;
-                        this.cartTotal=result.data.total;
-                        
- console.log(pizzaId+' added');
-                      console.log(this.cartTotal);
-                         console.log(this.cartPizzas);
+                        this.cartTotal=result.data.total.toFixed(2);
+                         this.showCheckout=true;
+                     
+                         
                         }
                   
 
@@ -66,7 +67,10 @@ document.addEventListener("alpine:init", () => {
 
    
 
-            //Determine if payment amount is enough
+            checkoutClicked(){
+
+this.showInput=true;
+},
 
             pay(pizzaId){
             	
@@ -78,16 +82,14 @@ axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/pay',{'cart_code':
                   this.orderItems = false;
                   this.showInput = false;
                   this.showCheckout = false;
-                  this.empty = true;
+                  
 
 this.getCart().then(result=> {
 
                         this.cartPizzas=result.data.pizzas;
-                        this.cartTotal=result.data.total;
+                        this.cartTotal=result.data.total.toFixed(2);
                         
- console.log(pizzaId+' added');
-                      console.log(this.cartTotal);
-                         console.log(this.cartPizzas);
+                      
                         }
                   
 
@@ -123,11 +125,11 @@ axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/add', { 'cart_code
                   this.getCart().then(result=> {
 
                         this.cartPizzas=result.data.pizzas;
-                        this.cartTotal=result.data.total;
-                        
- console.log(pizzaId+' added');
-                      console.log(this.cartTotal);
-                         console.log(this.cartPizzas);
+                        this.cartTotal=result.data.total.toFixed(2);
+                        this.showCheckout=true;
+ 
+                      
+                         
                         }
                   
 
@@ -156,12 +158,20 @@ axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', { 'cart_c
                   this.getCart().then(result=> {
 
                         this.cartPizzas=result.data.pizzas;
-                        this.cartTotal=result.data.total;
+                        this.cartTotal=result.data.total.toFixed(2);
                         
- console.log(pizzaId+' added');
-                      console.log(this.cartTotal);
-                         console.log(this.cartPizzas);
-                        }
+                        if(this.cartTotal==0){
+this.showCheckout=false;
+
+}       
+
+
+else{
+this.showCheckout=true;
+
+}                 
+ 
+                               }
                   
 
 

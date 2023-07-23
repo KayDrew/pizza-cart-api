@@ -36,16 +36,17 @@
           <tr>
             <td x-text="pizza.flavour"></td>
             <td x-text="pizza.size"></td>
+                           <td> <button class="buy" @click="buy(pizza.pizza_id)">+</button></td> <td> <button class="buy" @click="remove(pizza.pizza_id)">-</button></td>
+                            <td x-text="pizza.qty"></td>   
             <td x-text="pizza.price"></td>
-            <td x-text="pizza.pizza_id"></td>
-            <td> <button class="buy" @click="buy(pizza.pizza_id)">+</button></td> <td> <button class="buy" @click="remove(pizza.pizza_id)">-</button></td>
+           
           </tr>
 
         </table>
 
       </template>
 		<span >Your total: R</span><span  id="total"  x-text="cartTotal"   ></span>
-		
+		<button id="checkout" x-show="showCheckout" @click="checkoutClicked">Checkout</button>
     </div>
     	
 
