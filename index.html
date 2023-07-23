@@ -47,7 +47,18 @@
       </template>
 		<span >Your total: R</span><span  id="total"  x-text="cartTotal"   ></span>
 		<button id="checkout" x-show="showCheckout" @click="checkoutClicked">Checkout</button>
+		<p x-text="message" style="colour:red"></p>
+		  <span x-show="showInput"> Amount To Pay: </span><input  id="amountPaid" type="Number" placeholder="enter cash amount" x-model="amount" x-show="showInput"/>
+  <button class="pay"  @click="pay; setTimeout(function(){
+message='';},3000)"  x-show="showInput">Pay</button>
     </div>
+    
+    <div class="pastOrders">
+
+<template x-for="order in pastOrders">
+<li x-text="order.flavour"></li>
+</template>
+</div>
     	
 <div class="menu" x-show="showMenu">
     <div class="featured">
