@@ -50,10 +50,10 @@
       </template>
 		<span x-show="showCheckout">Amount Due: R</span><span  id="total"  x-text="cartTotal"  x-show="showCheckout"></span>
 		<p x-show="empty">Your Cart Is Empty</p>
-		<button class="checkout" x-show="empty" @click="showMenu=true; showCart=false">Shop Items</button>
+		<button class="checkout" x-show="empty" @click="showMenu=true; showCart=false">Shop Items</button><br/>
 		<button id="checkout" x-show="showCheckout" @click="checkoutClicked">Checkout</button>
-		<p x-text="message" style="colour:red"></p>
-		  <span x-show="showInput"> Amount To Pay: </span><input  id="amountPaid" type="Number" placeholder="enter cash amount" x-model="amount" x-show="showInput"/>
+		<p x-text="message" style="color:red"></p>
+		  <input  id="amountPaid" type="Number" placeholder="enter cash amount" x-model="amount" x-show="showInput"/>
   <button class="pay"  @click="pay; setTimeout(function(){
 message='';},3000)"  x-show="showInput">Pay</button>
     </div>
@@ -67,9 +67,9 @@ message='';},3000)"  x-show="showInput">Pay</button>
 </div>
     	
 <div class="menu" x-show="showMenu">
-    <div class="featured">
+    
       <template x-for="pizza in featuredPizzas">
-        <div class="pizza">
+        <div class="pizza featured">
         	<img src="pizza1.png"/>
           <h2 x-text="pizza.flavour"></h2>
           <h3 x-text="pizza.size"></h3>
@@ -78,12 +78,13 @@ message='';},3000)"  x-show="showInput">Pay</button>
           <button class="buy" @click="buy(pizza.pizza_id)">BUY</button>
         </div>
       </template>
-    </div>  
+     
+  </div> 
    
 
-    <div class="pizzaList"  style="margin-top:30px;margin-bottom:30px">
+    <div class="pizzaList"  style="margin-top:30px;margin-bottom:30px" x-show="showMenu">
       <template x-for="pizza in pizzas">
-        
+        <div>
           <li>
           	<span><img src="pizza2.png"  alt="pizza image" style="width:100px"/></span>
           
@@ -93,10 +94,7 @@ message='';},3000)"  x-show="showInput">Pay</button>
  
              <button class="buyList" @click="buy(pizza.id)">BUY</button>
        </li>
-   
-
-        
-
+      </div>
       </template>
     </div>
     </div>

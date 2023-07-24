@@ -62,7 +62,10 @@ this.cartId=result.data.cart_code;
                         this.cartTotal=result.data.total.toFixed(2)
                          this.showCheckout=true;
                          
-                                                    
+                             this.cartPizzas.forEach(function(pizza){
+this.totalItems+=pizza.qty;
+console.log(this.totalItems);
+                             });                       
                                        
                          
                         }
